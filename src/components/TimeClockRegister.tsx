@@ -3,7 +3,7 @@
  * Interface para funcionários registrarem ponto (manual, QR Code, geolocalização)
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Clock,
   MapPin,
@@ -93,6 +93,26 @@ export default function TimeClockRegister({ onBack }: TimeClockRegisterProps) {
     loadCompanyId();
   }, []);
 
+  const getCurrentLocation = useCallback(() => {
+    if (!navigator.geolocation) {
+      setLocationError('Geolocalização não suportada');
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+        setLocationError(null);
+      },
+      (error) => {
+        setLocationError('Erro ao obter localização: ' + error.message);
+      }
+    );
+  }, []);
+
   useEffect(() => {
     getCurrentLocation();
     
@@ -102,7 +122,7 @@ export default function TimeClockRegister({ onBack }: TimeClockRegisterProps) {
     }, 1000);
     
     return () => clearInterval(timeInterval);
-  }, []);
+  }, [getCurrentLocation]);
 
   // Carregar dados do funcionário após autenticação
   useEffect(() => {
@@ -132,7 +152,29 @@ export default function TimeClockRegister({ onBack }: TimeClockRegisterProps) {
     }
   };
 
-  const loadEmployeeData = async (emp: Employee) => {
+  const loadLastRecord = useCallback(async (employeeId: string) => {
+    try {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const records = await timeClockService.getAll({
+        employeeId,
+        startDate: today.toISOString(),
+        endDate: tomorrow.toISOString(),
+      });
+
+      setTodayRecords(records);
+      if (records.length > 0) {
+        setLastRecord(records[records.length - 1]);
+      }
+    } catch (error) {
+      console.error('Erro ao carregar registros:', error);
+    }
+  }, []);
+
+  const loadEmployeeData = useCallback(async (emp: Employee) => {
     try {
       setLoading(true);
       setEmployee(emp);
@@ -180,49 +222,9 @@ export default function TimeClockRegister({ onBack }: TimeClockRegisterProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [loadLastRecord]);
 
-  const loadLastRecord = async (employeeId: string) => {
-    try {
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
 
-      const records = await timeClockService.getAll({
-        employeeId,
-        startDate: today.toISOString(),
-        endDate: tomorrow.toISOString(),
-      });
-
-      setTodayRecords(records);
-      if (records.length > 0) {
-        setLastRecord(records[records.length - 1]);
-      }
-    } catch (error) {
-      console.error('Erro ao carregar registros:', error);
-    }
-  };
-
-  const getCurrentLocation = () => {
-    if (!navigator.geolocation) {
-      setLocationError('Geolocalização não suportada');
-      return;
-    }
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        setLocationError(null);
-      },
-      (error) => {
-        setLocationError('Erro ao obter localização: ' + error.message);
-      }
-    );
-  };
 
   const getNextType = (): TimeClock['type'] => {
     if (!lastRecord) return 'entry';
