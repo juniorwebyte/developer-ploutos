@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist-server",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es2019",
+    "rootDir": "./",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["./**/*.ts"]
+}
+
+
