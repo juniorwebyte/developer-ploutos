@@ -209,6 +209,7 @@ function App() {
               </div>
             </div>
           }>
+          // Controle da anomalia sintetica, rota escalonada
             <Routes>
               <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
               <Route path="/termos-de-uso" element={<TermosUso />} />
