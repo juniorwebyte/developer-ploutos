@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { X, TrendingUp, TrendingDown, DollarSign, BarChart3, PieChart, Calendar, Download, RefreshCw, ArrowUpRight, ArrowDownRight, FileText, Search, Filter, History, Eye, User, Clock, GitCompare } from 'lucide-react';
+import { X, TrendingUp, TrendingDown, DollarSign, BarChart3, PieChart, Calendar, Download, RefreshCw, ArrowUpRight, ArrowDownRight, FileText, Search, History, Eye, User, GitCompare } from 'lucide-react';
 import { formatCurrency } from '../utils/currency';
 import { cashFlowAuditService, AuditLog } from '../services/cashFlowAuditService';
 import { useAuth } from '../contexts/AuthContext';
