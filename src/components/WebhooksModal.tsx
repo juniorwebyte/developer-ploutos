@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Plus, Trash2, TestTube, CheckCircle2, XCircle, Clock, ExternalLink } from 'lucide-react';
+import { X, Plus, Trash2, TestTube, CheckCircle2, XCircle, ExternalLink } from 'lucide-react';
 import { webhookService, Webhook, WebhookEvent } from '../services/webhookService';
 
 interface WebhooksModalProps {
@@ -10,7 +10,6 @@ interface WebhooksModalProps {
 const WebhooksModal: React.FC<WebhooksModalProps> = ({ isOpen, onClose }) => {
   const [webhooks, setWebhooks] = useState<Webhook[]>([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [selectedWebhook, setSelectedWebhook] = useState<Webhook | null>(null);
   const [newWebhook, setNewWebhook] = useState({
     name: '',
     url: '',
@@ -21,15 +20,15 @@ const WebhooksModal: React.FC<WebhooksModalProps> = ({ isOpen, onClose }) => {
   });
   const [testingWebhook, setTestingWebhook] = useState<string | null>(null);
 
+  const loadWebhooks = () => {
+    setWebhooks(webhookService.getAllWebhooks());
+  };
+
   useEffect(() => {
     if (isOpen) {
       loadWebhooks();
     }
   }, [isOpen]);
-
-  const loadWebhooks = () => {
-    setWebhooks(webhookService.getAllWebhooks());
-  };
 
   const handleCreateWebhook = () => {
     if (!newWebhook.name.trim() || !newWebhook.url.trim() || newWebhook.events.length === 0) {
@@ -49,8 +48,9 @@ const WebhooksModal: React.FC<WebhooksModalProps> = ({ isOpen, onClose }) => {
       });
       setShowCreateModal(false);
       loadWebhooks();
-    } catch (error: any) {
-      alert(error.message || 'Erro ao criar webhook');
+    } catch (error: unknown) {
+      const msg = (error as Error)?.message || 'Erro ao criar webhook';
+      alert(msg);
     }
   };
 
@@ -71,8 +71,9 @@ const WebhooksModal: React.FC<WebhooksModalProps> = ({ isOpen, onClose }) => {
     try {
       const result = await webhookService.testWebhook(webhook);
       alert(result.message);
-    } catch (error: any) {
-      alert('Erro ao testar webhook: ' + error.message);
+    } catch (error: unknown) {
+      const msg = (error as Error)?.message || 'Erro ao testar webhook';
+      alert('Erro ao testar webhook: ' + msg);
     } finally {
       setTestingWebhook(null);
       loadWebhooks();

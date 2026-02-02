@@ -3,7 +3,7 @@
  * Configurações globais e por empresa
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Settings,
   Save,
@@ -49,11 +49,7 @@ export default function TimeClockSettings({ onBack }: TimeClockSettingsProps) {
     keepCompanies: true,
   });
 
-  useEffect(() => {
-    loadCompanies();
-  }, []);
-
-  const loadCompanies = async () => {
+  const loadCompanies = useCallback(async () => {
     try {
       const comps = await companyService.getAll();
       setCompanies(comps);
@@ -63,7 +59,11 @@ export default function TimeClockSettings({ onBack }: TimeClockSettingsProps) {
     } catch (error) {
       console.error('Erro ao carregar empresas:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadCompanies();
+  }, [loadCompanies]);
 
   const handleSave = async () => {
     setSaving(true);
