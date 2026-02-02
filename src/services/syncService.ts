@@ -31,7 +31,7 @@ class SyncService {
           timestamp: new Date(e.timestamp)
         }));
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar eventos - retornar array vazio
     }
   }
@@ -123,7 +123,7 @@ class SyncService {
       try {
       this.processEvent(event);
         this.markEventAsProcessed(event.id, true);
-      } catch (error) {
+      } catch (_error$2) {
         this.markEventAsProcessed(event.id, false);
       }
     }
@@ -167,7 +167,7 @@ class SyncService {
           this.syncSistema(event);
           break;
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao processar evento - não crítico
     }
   }

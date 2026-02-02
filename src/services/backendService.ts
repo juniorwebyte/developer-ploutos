@@ -40,7 +40,7 @@ class BackendService {
       
       clearTimeout(timeoutId);
       this.cachedOnline = res.ok;
-    } catch (error) {
+    } catch (_error$2) {
       this.cachedOnline = false;
       // Backend não disponível - usar modo local
     }

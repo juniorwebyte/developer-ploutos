@@ -44,7 +44,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         // Manter apenas os últimos 10 erros
         const recentLogs = errorLogs.slice(-10);
         localStorage.setItem('errorLogs', JSON.stringify(recentLogs));
-      } catch (e) {
+      } catch (_e) {
         // Falha silenciosa ao salvar logs
       }
     }

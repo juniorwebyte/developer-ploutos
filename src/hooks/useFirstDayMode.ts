@@ -23,7 +23,7 @@ export const useFirstDayMode = () => {
       try {
         const steps = JSON.parse(savedSteps);
         setCompletedSteps(new Set(steps));
-      } catch (e) {
+      } catch (_e) {
         // Ignorar erros de parse
       }
     }

@@ -832,7 +832,7 @@ export default function LandingPageNew({ onRequestLogin, onRequestDemo, onOpenAd
                   setContactFormData({ name: '', email: '', message: '' });
                   setContactFormTouched({ name: false, email: false, message: false });
                   setContactFormErrors({ name: '', email: '', message: '' });
-                } catch (error) {
+                } catch (_error$2) {
                   alert('Erro ao enviar mensagem. Por favor, tente novamente.');
                 } finally {
                   setIsSubmittingContact(false);

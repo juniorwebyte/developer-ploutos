@@ -57,8 +57,8 @@ const CashFlowUnlockRequest: React.FC<CashFlowUnlockRequestProps> = ({ onRequest
             headers: { Authorization: `Bearer ${token}` }
           });
         }
-      } catch (e) {
-        console.warn('⚠️ Servidor offline, solicitação salva localmente');
+      } catch (_e) {
+        console.warn('⚠️ Servidor offlin e, solicitação salva localmente');
       }
 
       setIsRequested(true);

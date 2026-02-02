@@ -157,7 +157,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/products`);
       if (!response.ok) throw new Error('Falha ao carregar produtos');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar produtos - retornar array vazio
       return this.getMockProducts();
     }
@@ -211,7 +211,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/sales`);
       if (!response.ok) throw new Error('Falha ao carregar vendas');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar vendas - retornar array vazio
       return this.getMockSales();
     }
@@ -250,7 +250,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/stores`);
       if (!response.ok) throw new Error('Falha ao carregar lojas');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar lojas - retornar array vazio
       return this.getMockStores();
     }
@@ -262,7 +262,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/suppliers`);
       if (!response.ok) throw new Error('Falha ao carregar fornecedores');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar fornecedores - retornar array vazio
       return this.getMockSuppliers();
     }
@@ -274,7 +274,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/manufacturers`);
       if (!response.ok) throw new Error('Falha ao carregar fabricantes');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar fabricantes - retornar array vazio
       return this.getMockManufacturers();
     }
@@ -286,7 +286,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/brands`);
       if (!response.ok) throw new Error('Falha ao carregar marcas');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar marcas - retornar array vazio
       return this.getMockBrands();
     }
@@ -298,7 +298,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/customers`);
       if (!response.ok) throw new Error('Falha ao carregar clientes');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar clientes - retornar array vazio
       return this.getMockCustomers();
     }
@@ -310,7 +310,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/sellers`);
       if (!response.ok) throw new Error('Falha ao carregar vendedores');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar vendedores - retornar array vazio
       return this.getMockSellers();
     }
@@ -322,7 +322,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/fiscal-receipts`);
       if (!response.ok) throw new Error('Falha ao carregar cupons fiscais');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar cupons fiscais - retornar array vazio
       return this.getMockFiscalReceipts();
     }
@@ -349,7 +349,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/nfes`);
       if (!response.ok) throw new Error('Falha ao carregar NFEs');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar NFEs - retornar array vazio
       return this.getMockNFEs();
     }
@@ -376,7 +376,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/reports/sales?start=${startDate}&end=${endDate}`);
       if (!response.ok) throw new Error('Falha ao carregar relatório de vendas');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar relatório de vendas
       return this.getMockSalesReport();
     }
@@ -387,7 +387,7 @@ class PDVService {
       const response = await fetch(`${this.baseUrl}/api/pdv/reports/inventory`);
       if (!response.ok) throw new Error('Falha ao carregar relatório de estoque');
       return await response.json();
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar relatório de estoque
       return this.getMockInventoryReport();
     }

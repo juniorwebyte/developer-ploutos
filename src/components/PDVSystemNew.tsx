@@ -7459,7 +7459,7 @@ function PDVSystemNew({ onClose }: PDVSystemNewProps) {
                           setShowImportPurchaseModal(false);
                           alert(`${importedPurchases.length} compra(s) importada(s) com sucesso!`);
                         }
-                      } catch (error) {
+                      } catch (_error$2) {
                         alert('Erro ao processar arquivo.');
                       }
                     };
@@ -7639,7 +7639,7 @@ function PDVSystemNew({ onClose }: PDVSystemNewProps) {
                           setShowImportTransferModal(false);
                           alert(`${importedTransfers.length} transferência(s) importada(s) com sucesso!`);
                         }
-                      } catch (error) {
+                      } catch (_error$2) {
                         alert('Erro ao processar arquivo.');
                       }
                     };

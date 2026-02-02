@@ -24,7 +24,7 @@ class AIService {
       if (saved) {
         this.contextHistory = new Map(JSON.parse(saved));
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar histórico - retornar array vazio
     }
   }
@@ -39,7 +39,7 @@ class AIService {
       if (saved) {
         this.userPreferences = new Map(JSON.parse(saved));
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar preferências - usar padrão
     }
   }

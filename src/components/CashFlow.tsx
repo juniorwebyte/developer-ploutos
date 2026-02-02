@@ -280,7 +280,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
           );
           historyData = sanitized;
         }
-      } catch (error) {
+      } catch (_error$2) {
         // Histórico diário inválido - ignorar cache
       }
     }
@@ -314,7 +314,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
             }
           });
         }
-      } catch (error) {
+      } catch (_error$2) {
         // Fechamentos inválidos - ignorar
       }
     }
@@ -1223,7 +1223,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
           observacoes: observacoes || undefined
         };
         printCashFlow(cashFlowData, false, anexarObservacoes);
-      } catch (e) {
+      } catch (_e) {
         // Falha ao abrir impressão - continuar normalmente
       }
 
@@ -1296,7 +1296,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
         try {
           fechamentos = JSON.parse(storedFechamentos);
           if (!Array.isArray(fechamentos)) fechamentos = [];
-        } catch (e) {
+        } catch (_e) {
           fechamentos = [];
         }
       }
@@ -1327,7 +1327,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
         totalSaidas: totalSaidasCalculado,
         saldo: total
       }, { userId: user || undefined });
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao salvar fechamento - não crítico
     }
   }, [generateFechamentoFile, entries, exits, total, cancelamentos, totalEntradas, totalSaidasCalculado, todayKey, user]);
@@ -2092,7 +2092,7 @@ function CashFlow({ isDemo = false, onBackToLanding }: CashFlowProps) {
         try {
           fechamentosParciais = JSON.parse(storedFechamentosParciais);
           if (!Array.isArray(fechamentosParciais)) fechamentosParciais = [];
-        } catch (e) {
+        } catch (_e) {
           fechamentosParciais = [];
         }
       }
@@ -2495,7 +2495,7 @@ Webyte Hub - CNPJ 29.793.949/0001-78
         if (Array.isArray(parsed)) {
           setSaidasTemplates(parsed);
         }
-      } catch (e) {
+      } catch (_e) {
         // Ignorar erro
       }
     }
@@ -2517,7 +2517,7 @@ Webyte Hub - CNPJ 29.793.949/0001-78
         if (Array.isArray(parsed)) {
           setEntradasTemplates(parsed);
         }
-      } catch (e) {
+      } catch (_e) {
         // Ignorar erro
       }
     }
@@ -3705,7 +3705,7 @@ Webyte Hub - CNPJ 29.793.949/0001-78
         if (parsed.observacoes) {
           setObservacoes(parsed.observacoes);
         }
-      } catch (error) {
+      } catch (_error$2) {
         // Ignorar erro
       }
     }
@@ -3723,7 +3723,7 @@ Webyte Hub - CNPJ 29.793.949/0001-78
         } else {
           setObservacoes('');
         }
-      } catch (error) {
+      } catch (_error$2) {
         setObservacoes('');
       }
     } else {
@@ -8726,7 +8726,7 @@ Webyte Hub - CNPJ 29.793.949/0001-78
                       </div>
                     </div>
                   );
-                } catch (error) {
+                } catch (_error$2) {
                   return (
                     <div className="text-center py-6">
                       <AlertCircle className="w-10 h-10 text-red-400 mx-auto mb-2" />

@@ -41,7 +41,7 @@ class Analytics {
       try {
         const userData = JSON.parse(user);
         this.userId = userData.id || userData.username;
-      } catch (e) {
+      } catch (_e) {
         // Ignorar erro de parsing
       }
     }
@@ -53,7 +53,7 @@ class Analytics {
       if (stored) {
         this.events = JSON.parse(stored).slice(-this.maxEvents);
       }
-    } catch (e) {
+    } catch (_e) {
       // Ignorar erro de parsing
     }
   }
@@ -61,7 +61,7 @@ class Analytics {
   private saveEvents(): void {
     try {
       localStorage.setItem('analytics_events', JSON.stringify(this.events.slice(-this.maxEvents)));
-    } catch (e) {
+    } catch (_e) {
       // Ignorar erro de salvamento (storage cheio, etc)
     }
   }

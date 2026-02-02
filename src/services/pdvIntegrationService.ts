@@ -42,7 +42,7 @@ class PDVIntegrationService {
           lastSync: config.lastSync ? new Date(config.lastSync) : undefined
         };
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro silencioso - retorna configuração padrão
     }
     
@@ -175,7 +175,7 @@ class PDVIntegrationService {
       }
       
       return sales;
-    } catch (error) {
+    } catch (_error$2) {
       return [];
     }
   }
@@ -416,7 +416,7 @@ class PDVIntegrationService {
         const limitedSales = allSales.slice(-1000);
         localStorage.setItem(this.SALES_KEY, JSON.stringify(limitedSales));
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro silencioso - não crítico
     }
   }
@@ -425,7 +425,7 @@ class PDVIntegrationService {
   clearSalesCache(): void {
     try {
       localStorage.removeItem(this.SALES_KEY);
-    } catch (error) {
+    } catch (_error$2) {
       // Erro silencioso
     }
   }
@@ -453,7 +453,7 @@ class PDVIntegrationService {
         today: todaySales.length,
         byMethod
       };
-    } catch (error) {
+    } catch (_error$2) {
       return { total: 0, today: 0, byMethod: {} };
     }
   }

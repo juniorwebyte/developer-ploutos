@@ -608,7 +608,7 @@ export const useCashFlow = () => {
       try {
         cashBacks = JSON.parse(storedCashBacks);
         if (!Array.isArray(cashBacks)) cashBacks = [];
-      } catch (e) {
+      } catch (_e) {
         cashBacks = [];
       }
     }
@@ -663,7 +663,7 @@ export const useCashFlow = () => {
       if (cashBack) {
         return cashBack.valor - (cashBack.valorUtilizado || 0);
       }
-    } catch (e) {
+    } catch (_e) {
       // Ignorar erro
     }
     
@@ -691,7 +691,7 @@ export const useCashFlow = () => {
           return true;
         }
       }
-    } catch (e) {
+    } catch (_e) {
       // Ignorar erro
     }
     
