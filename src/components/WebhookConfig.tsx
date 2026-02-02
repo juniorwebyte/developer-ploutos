@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Webhook, 
   Plus, 
@@ -61,11 +61,7 @@ function WebhookConfig({ onClose }: WebhookConfigProps) {
     { id: 'dispute.created', name: 'Disputa Criada', description: 'Quando uma disputa é criada' }
   ];
 
-  useEffect(() => {
-    loadWebhooks();
-  }, []);
-
-  const loadWebhooks = async () => {
+  const loadWebhooks = useCallback(async () => {
     setLoading(true);
     try {
       // Simular carregamento de webhooks
@@ -103,7 +99,11 @@ function WebhookConfig({ onClose }: WebhookConfigProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadWebhooks();
+  }, [loadWebhooks]);
 
   const createWebhook = async () => {
     if (!formData.url || formData.enabled_events.length === 0) {
