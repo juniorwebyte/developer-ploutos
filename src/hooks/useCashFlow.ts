@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
-import { CashFlowEntry, CashFlowExit, Cancelamento, Cheque, SaidaRetirada, Sangria, Puxador, OutroLancamento, BrindeLancamento, ValeRefeicaoAlimentacao } from '../types';
+import { CashFlowEntry, CashFlowExit, Cancelamento, Cheque, SaidaRetirada, Sangria, OutroLancamento, BrindeLancamento, ValeRefeicaoAlimentacao } from '../types';
 import { preciseCurrency } from '../utils/currency';
 
 const STORAGE_KEY = 'cashFlowData';

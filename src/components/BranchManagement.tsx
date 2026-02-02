@@ -24,7 +24,7 @@ import {
   type Company,
 } from '../services/timeClockService';
 import cepService from '../services/cepService';
-import { validateCEP, formatCEP, validatePhone, formatPhone } from '../services/validationService';
+import { validateCEP, formatCEP } from '../services/validationService';
 
 interface BranchManagementProps {
   onBack?: () => void;

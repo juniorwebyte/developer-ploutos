@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Copy, Check, Smartphone, CreditCard, Clock, Shield, QrCode, Download } from 'lucide-react';
+import { X, Copy, Check, CreditCard, Shield, QrCode, Download } from 'lucide-react';
 import pixService from '../services/pixService';
 import whatsappService from '../services/whatsappService';
 import emailService from '../services/emailService';

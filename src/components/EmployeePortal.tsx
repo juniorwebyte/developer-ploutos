@@ -28,8 +28,8 @@ import {
   type TimeClock,
   type Justification,
 } from '../services/timeClockService';
-import { workScheduleService, type DaySummary, type MonthSummary } from '../services/workScheduleService';
-import { complianceService, type PointMirror } from '../services/complianceService';
+import { workScheduleService } from '../services/workScheduleService';
+import { complianceService } from '../services/complianceService';
 import { useAuth } from '../contexts/AuthContext';
 
 interface EmployeePortalProps {
