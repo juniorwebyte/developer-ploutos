@@ -63,7 +63,7 @@ const FinancialTools = lazy(() => import('./FinancialTools'));
 const TimeClockModule = lazy(() => import('./TimeClockModule'));
 
 import licenseService from '../services/licenseService';
-import { securityService, performanceService } from '../services/securityService';
+
 import paymentGatewayService from '../services/paymentGatewayService';
 import storageManager from '../utils/storage';
 
@@ -381,7 +381,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
           }
         }
       }
-    } catch (e:any) {
+    } catch (_e:any) {
       // Ignorar erros - já temos dados do localStorage
       console.warn('⚠️ Servidor offline, usando dados locais');
     } finally {
@@ -643,7 +643,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
             console.log('✅ Sincronizado com servidor');
           }
         }
-      } catch (e) {
+      } catch (_e) {
         console.warn('⚠️ Servidor offline, mas exclusão local realizada');
       }
       
@@ -688,7 +688,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
         localStorage.setItem('pending_leads', JSON.stringify(leadsWithIds));
       }
       setLoadError(null);
-    } catch (e) {
+    } catch (_e) {
       setLeads([]);
     }
     
@@ -709,7 +709,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
           }
         }
       }
-    } catch(e:any){
+    } catch (_e:any){
       // Ignorar erros - já temos dados do localStorage
       console.warn('⚠️ Servidor offline, usando dados locais');
     } finally { 
@@ -751,7 +751,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
         localStorage.setItem('pending_users', JSON.stringify(usersWithIds));
       }
       setLoadError(null);
-    } catch (e) {
+    } catch (_e) {
       setPendingUsers([]);
     }
     
@@ -772,7 +772,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
           }
         }
       }
-    } catch(e:any){
+    } catch (_e:any){
       // Ignorar erros - já temos dados do localStorage
       console.warn('⚠️ Servidor offline, usando dados locais');
     } finally { 
@@ -1090,7 +1090,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
             headers: { Authorization: `Bearer ${token}` }
           });
         }
-      } catch (e) {
+      } catch (_e) {
         console.warn('⚠️ Servidor offline, mas licença criada localmente');
       }
     } catch (error: any) {
@@ -1678,7 +1678,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                                 }
                               } catch {}
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas aprovação local realizada');
                           }
                         }
@@ -1768,7 +1768,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                               });
                               console.log('✅ Sincronizado com servidor');
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas exclusão local realizada');
                           }
                         }
@@ -1891,7 +1891,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                                 }
                               } catch {}
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas aprovação local realizada');
                           }
                         }
@@ -1986,7 +1986,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                               });
                               console.log('✅ Sincronizado com servidor');
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas exclusão local realizada');
                           }
                         }
@@ -2157,7 +2157,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                                   }
                                 } catch {}
                               }
-                            } catch (e) {
+                            } catch (_e) {
                               console.warn('⚠️ Servidor offline, mas aprovação local realizada');
                             }
                           }
@@ -2253,7 +2253,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                                 });
                                 console.log('✅ Sincronizado com servidor');
                               }
-                            } catch (e) {
+                            } catch (_e) {
                               console.warn('⚠️ Servidor offline, mas exclusão local realizada');
                             }
                           }
@@ -2389,7 +2389,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                                 }
                               } catch {}
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas aprovação local realizada');
                           }
                         }
@@ -2485,7 +2485,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
                               });
                               console.log('✅ Sincronizado com servidor');
                             }
-                          } catch (e) {
+                          } catch (_e) {
                             console.warn('⚠️ Servidor offline, mas exclusão local realizada');
                           }
                         }
@@ -3383,7 +3383,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
       const date = dateValue instanceof Date ? dateValue : new Date(dateValue);
       if (isNaN(date.getTime())) return 'Data inválida';
       return date.toLocaleDateString('pt-BR');
-    } catch (e) {
+    } catch (_e) {
       return 'Data inválida';
     }
   };
@@ -3394,7 +3394,7 @@ function SuperAdminDashboard({ onBackToLogin }: SuperAdminDashboardProps) {
       const date = dateValue instanceof Date ? dateValue : new Date(dateValue);
       if (isNaN(date.getTime())) return 'Data inválida';
       return date.toLocaleString('pt-BR');
-    } catch (e) {
+    } catch (_e) {
       return 'Data inválida';
     }
   };

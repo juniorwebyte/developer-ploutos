@@ -163,7 +163,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           try {
             const licenseData = JSON.parse(savedLicense);
             setLicense(licenseData);
-          } catch (e) {
+          } catch (_e) {
             setLicense(null);
           }
         } else {

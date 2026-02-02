@@ -23,15 +23,15 @@ import {
   TrendingDown,
   Package
 } from 'lucide-react';
-import { NotaFiscal, CadernoNotasData, ParcelaNotaFiscal } from '../types';
-import { formatCurrency, parseCurrency, formatCurrencyInput } from '../utils/currency';
+import { NotaFiscal, ParcelaNotaFiscal } from '../types';
+import { formatCurrency } from '../utils/currency';
 import { useCadernoNotas } from '../hooks/useCadernoNotas';
 import ConfirmDialog from './ConfirmDialog';
 import Notification from './Notification';
 import ParcelasManager from './ParcelasManager';
 import NotaFiscalReport from './NotaFiscalReport';
 import { auditService } from '../services/auditService';
-import { syncService } from '../services/syncService';
+
 
 interface CadernoNotasProps {
   onBackToLanding?: () => void;

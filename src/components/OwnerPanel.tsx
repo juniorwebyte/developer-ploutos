@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { X, Save, Building, MapPin, Phone, Mail, Globe, CreditCard, Palette, Settings, Upload, Check, Shield, RefreshCw, KeyRound, Calendar, Briefcase, Search, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { X, Save, Building, MapPin, Phone, CreditCard, Palette, Settings, Upload, Check, Shield, RefreshCw, KeyRound, Calendar, Briefcase, Search, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { CompanyConfig } from '../types';
 import pixService from '../services/pixService';
 import licenseService, { License } from '../services/licenseService';
 import { useAuth } from '../contexts/AuthContext';
-import { formatPhone, formatCEP, formatCNPJ, unformatPhone, unformatCEP, unformatCNPJ, buscarCEP, buscarCNPJ, ViaCEPResponse, CNPJResponse } from '../utils/formatters';
+import { formatPhone, formatCEP, formatCNPJ, unformatPhone, unformatCEP, unformatCNPJ, buscarCEP, buscarCNPJ } from '../utils/formatters';
 import BusinessSegmentConfig from './BusinessSegmentConfig';
 import { CompanyBusinessSegment } from '../types/businessSegment';
 

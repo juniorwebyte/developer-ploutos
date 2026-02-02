@@ -276,10 +276,10 @@ class PaymentGatewayService {
           },
           body: JSON.stringify(webhookData)
         });
-      } catch (error) {
+      } catch (_error$2) {
         // Webhook salvo para retry
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao processar webhook
     }
   }
@@ -354,7 +354,7 @@ class PaymentGatewayService {
     try {
       const response = await this.makeRequest<PaymentMethod[]>('/payment_methods');
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar métodos - retornar array vazio
       // Fallback para dados demo incluindo criptomoedas
       return [
@@ -489,7 +489,7 @@ class PaymentGatewayService {
       // Salvar cobrança mesmo se vier do backend
       this.saveCharge(response.data);
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Backend não disponível - usar modo local
       // Criar cobrança local e persistir
       const charge = this.simulateCharge(chargeData);
@@ -525,7 +525,7 @@ class PaymentGatewayService {
       }
       
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Backend não disponível - usar modo local
       // Criar LinkInvoice local e persistir
       const linkInvoice = this.simulateLinkInvoice(invoiceData);
@@ -762,7 +762,7 @@ class PaymentGatewayService {
     try {
       const response = await this.makeRequest<Charge>(`/charges/${chargeId}`);
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Backend não disponível - buscar localmente
       // Buscar no armazenamento local
       const charges = this.getAllCharges();
@@ -848,7 +848,7 @@ class PaymentGatewayService {
 
       const response = await this.makeRequest<Charge[]>(`/charges?${params}`);
       return response;
-    } catch (error) {
+    } catch (_error$2) {
       // Backend não disponível - buscar localmente
       // Buscar no armazenamento local com filtros
       let charges = this.getAllCharges();
@@ -913,7 +913,7 @@ class PaymentGatewayService {
         body: JSON.stringify(refundData)
       });
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao criar reembolso
       return {
         id: `re_${Date.now()}`,
@@ -948,7 +948,7 @@ class PaymentGatewayService {
         body: JSON.stringify(customerData)
       });
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao criar cliente
       return {
         id: `cus_${Date.now()}`,
@@ -997,7 +997,7 @@ class PaymentGatewayService {
 
       const response = await this.makeRequest<Customer[]>(`/customers?${params}`);
       return response;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao listar clientes - retornar array vazio
       return {
         data: [],
@@ -1026,7 +1026,7 @@ class PaymentGatewayService {
         body: JSON.stringify(intentData)
       });
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao criar Payment Intent
       return {
         id: `pi_${Date.now()}`,
@@ -1071,7 +1071,7 @@ class PaymentGatewayService {
         body: JSON.stringify(endpointData)
       });
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao criar webhook
       return {
         id: `we_${Date.now()}`,
@@ -1087,7 +1087,7 @@ class PaymentGatewayService {
     try {
       const response = await this.makeRequest<any>(`/statistics/advanced?period=${period}`);
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar estatísticas
       return {
         total_charges: 1247,
@@ -1220,7 +1220,7 @@ class PaymentGatewayService {
     try {
       const response = await this.makeRequest<any>('/account');
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao obter informações - retornar dados padrão
       return {
         id: 'acct_ploutosledger',
@@ -1244,7 +1244,7 @@ class PaymentGatewayService {
     try {
       const response = await this.makeRequest<any>('/balance');
       return response.data;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao obter saldo - retornar dados padrão
       return {
         available: [{ amount: 125430.50, currency: 'brl' }],

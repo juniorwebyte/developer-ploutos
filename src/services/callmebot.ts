@@ -40,7 +40,7 @@ export class CallMeBotClient {
         attempt++;
         if (attempt >= maxRetries) return { ok: false, status: res.status, body: text };
         await sleep(1000 * Math.pow(1.5, attempt));
-      } catch (e) {
+      } catch (_e) {
         attempt++;
         if (attempt >= maxRetries) return { ok: false };
         await sleep(1000 * Math.pow(1.5, attempt));

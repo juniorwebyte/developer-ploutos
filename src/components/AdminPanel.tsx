@@ -83,7 +83,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       const base = backendService.getBaseUrl();
       await axios.post(`${base}/api/users`, { username, password: 'changeme', role: 'user' }, { headers: { Authorization: `Bearer ${token}` } });
       await refresh();
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao criar usuário');
     }
   };
@@ -135,7 +135,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       const base = backendService.getBaseUrl();
       const { data } = await axios.get(`${base}/api/tenants`, { headers: { Authorization: `Bearer ${token}` } });
       setTenants(data);
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao carregar tenants');
     }
   };
@@ -148,7 +148,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       await axios.post(`${base}/api/tenants`, { name: newTenantName }, { headers: { Authorization: `Bearer ${token}` } });
       setNewTenantName('');
       await loadTenants();
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao criar tenant');
     }
   };
@@ -161,7 +161,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       await axios.post(`${base}/api/tenants/${selectedTenantId}/users`, { userId: associateUserId, role: 'owner' }, { headers: { Authorization: `Bearer ${token}` } });
       alert('Usuário associado');
       setAssociateUserId('');
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao associar usuário');
     }
   };
@@ -186,7 +186,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       await axios.post(`${base}/api/plans`, newPlan, { headers: { Authorization: `Bearer ${token}` } });
       setNewPlan({ name: '', priceCents: 0, interval: 'monthly' });
       alert('Plano criado');
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao criar plano');
     }
   };
@@ -203,7 +203,7 @@ export default function AdminPanel({ onBackToLanding }: AdminPanelProps) {
       const base = backendService.getBaseUrl();
       await axios.post(`${base}/api/tenants/${subTenantId}/subscriptions`, { planId: subPlanId, status: 'active' }, { headers: { Authorization: `Bearer ${token}` } });
       alert('Assinatura criada');
-    } catch (e) {
+    } catch (_e) {
       alert('Falha ao criar assinatura');
     }
   };

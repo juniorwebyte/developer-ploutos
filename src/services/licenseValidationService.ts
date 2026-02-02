@@ -28,7 +28,7 @@ class LicenseValidationService {
       if (stored) {
         this.validationLogs = JSON.parse(stored);
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar logs - usar array vazio
       this.validationLogs = [];
     }
@@ -41,7 +41,7 @@ class LicenseValidationService {
       window.dispatchEvent(new CustomEvent('licenseValidation', {
         detail: this.validationLogs[this.validationLogs.length - 1]
       }));
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao salvar logs - não crítico
     }
   }

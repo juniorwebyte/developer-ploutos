@@ -49,7 +49,7 @@ class SecurityService {
       if (saved) {
         this.config = { ...this.config, ...JSON.parse(saved) };
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar configuração - usar padrão
     }
   }
@@ -315,7 +315,7 @@ class SecurityService {
       }
       
       localStorage.setItem('ploutos_security_logs', JSON.stringify(existingLogs));
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao salvar log - não crítico
     }
   }
@@ -337,7 +337,7 @@ class SecurityService {
       }
 
       return true;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao verificar sessão
       return false;
     }
@@ -387,7 +387,7 @@ class SecurityService {
   getSecurityLogs(): any[] {
     try {
       return JSON.parse(localStorage.getItem('ploutos_security_logs') || '[]');
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao obter logs - retornar array vazio
       return [];
     }
@@ -405,7 +405,7 @@ class SecurityService {
       );
       
       localStorage.setItem('ploutos_security_logs', JSON.stringify(filteredLogs));
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao limpar logs - não crítico
     }
   }
@@ -436,7 +436,7 @@ class PerformanceService {
       if (saved) {
         this.config = { ...this.config, ...JSON.parse(saved) };
       }
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar configuração - usar padrão
     }
   }
@@ -621,7 +621,7 @@ class PerformanceService {
       }
 
       localStorage.setItem('ploutos_performance_metrics', JSON.stringify(existingMetrics));
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao salvar métrica - não crítico
     }
   }
@@ -630,7 +630,7 @@ class PerformanceService {
   getPerformanceMetrics(): any[] {
     try {
       return JSON.parse(localStorage.getItem('ploutos_performance_metrics') || '[]');
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao obter métricas - retornar array vazio
       return [];
     }

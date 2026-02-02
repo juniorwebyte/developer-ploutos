@@ -6,7 +6,7 @@ class EmailService {
       // Enviando e-mail de boas-vindas
       // Em produção, chamada HTTP para o backend enviar via provider
       return true;
-    } catch (e) {
+    } catch (_e) {
       // Falha ao enviar e-mail
       return false;
     }
