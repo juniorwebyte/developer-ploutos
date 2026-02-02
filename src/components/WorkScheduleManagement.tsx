@@ -3,15 +3,13 @@
  * CRUD completo de jornadas (fixa, flexível, 12x36, custom)
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Calendar,
   Plus,
   Edit,
   Trash2,
   Search,
-  Clock,
-  Building,
 } from 'lucide-react';
 import {
   workScheduleService,
@@ -33,24 +31,7 @@ export default function WorkScheduleManagement({ onBack }: WorkScheduleManagemen
   const [showModal, setShowModal] = useState(false);
   const [editingSchedule, setEditingSchedule] = useState<WorkSchedule | null>(null);
 
-  useEffect(() => {
-    let isMounted = true;
-    const load = async () => {
-      try {
-        await loadData();
-      } catch (error) {
-        if (isMounted) {
-          console.error('Erro ao carregar dados:', error);
-        }
-      }
-    };
-    load();
-    return () => {
-      isMounted = false;
-    };
-  }, [filterCompany]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       const [scheds, comps] = await Promise.all([
@@ -66,7 +47,24 @@ export default function WorkScheduleManagement({ onBack }: WorkScheduleManagemen
     } finally {
       setLoading(false);
     }
-  };
+  }, [filterCompany]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const load = async () => {
+      try {
+        await loadData();
+      } catch (error) {
+        if (isMounted) {
+          console.error('Erro ao carregar dados:', error);
+        }
+      }
+    };
+    load();
+    return () => {
+      isMounted = false;
+    };
+  }, [loadData]);
 
   const handleCreate = () => {
     setEditingSchedule(null);
