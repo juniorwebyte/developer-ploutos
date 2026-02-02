@@ -54,7 +54,7 @@ class CashFlowAuditService {
       }
 
       localStorage.setItem(this.storageKey, JSON.stringify(logs));
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao registrar log - não crítico
     }
   }
@@ -104,7 +104,7 @@ class CashFlowAuditService {
 
       // Ordenar por timestamp (mais recente primeiro)
       return logs.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao carregar logs - retornar array vazio
       return [];
     }
@@ -184,7 +184,7 @@ class CashFlowAuditService {
       localStorage.setItem(this.storageKey, JSON.stringify(filteredLogs));
 
       return logs.length - filteredLogs.length;
-    } catch (error) {
+    } catch (_error$2) {
       // Erro ao limpar logs - não crítico
       return 0;
     }
