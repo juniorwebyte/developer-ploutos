@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Key, CheckCircle, XCircle, Gift, Lock } from 'lucide-react';
+import { Key, CheckCircle, XCircle, Gift } from 'lucide-react';
 
 interface LicenseKeyInputProps {
   onLicenseActivated?: (licenseKey: string) => void;

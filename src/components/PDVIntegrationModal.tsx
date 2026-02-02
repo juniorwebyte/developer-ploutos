@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, RefreshCw, Download, Settings, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
+import { X, RefreshCw, Settings, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
 import { pdvIntegrationService, PDVIntegrationConfig } from '../services/pdvIntegrationService';
-import { formatCurrency } from '../utils/currency';
+
 
 interface PDVIntegrationModalProps {
   isOpen: boolean;

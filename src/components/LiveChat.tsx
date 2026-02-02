@@ -14,7 +14,7 @@ import {
   Loader2
 } from 'lucide-react';
 import aiService, { AIMessage } from '../services/aiService';
-import { chatService, ChatMessage, ChatSession } from '../services/chatService';
+import { chatService, ChatSession } from '../services/chatService';
 
 interface Message {
   id: string;
