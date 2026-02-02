@@ -3,7 +3,7 @@
  * Geração de relatórios com exportação PDF/Excel/CSV
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   FileText,
   Download,
@@ -46,11 +46,7 @@ export default function TimeClockReports({ onBack }: TimeClockReportsProps) {
     endDate: new Date().toISOString().split('T')[0],
   });
 
-  useEffect(() => {
-    loadEmployees();
-  }, []);
-
-  const loadEmployees = async () => {
+  const loadEmployees = useCallback(async () => {
     try {
       const [emps, brs, depts] = await Promise.all([
         employeeService.getAll(),
@@ -63,7 +59,11 @@ export default function TimeClockReports({ onBack }: TimeClockReportsProps) {
     } catch (error) {
       console.error('Erro ao carregar dados:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadEmployees();
+  }, [loadEmployees]);
 
   const handleGenerateReport = async () => {
     setLoading(true);
