@@ -19,7 +19,7 @@ import { PlanRecord } from '../services/plansService';
 import { useAuth } from '../contexts/AuthContext';
 import pixService from '../services/pixService';
 import { PixCobranca } from '../types';
-import { formatPhone, formatCPF, formatCreditCard, formatDate, unformatPhone, unformatCPF, unformatCreditCard, unformatDate } from '../utils/formatters';
+import { formatPhone, formatCPF, formatCreditCard, unformatPhone, unformatCPF, unformatCreditCard } from '../utils/formatters';
 
 interface PaymentPageProps {
   selectedPlan: PlanRecord;
