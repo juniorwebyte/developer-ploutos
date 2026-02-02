@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Lock, User, Eye, EyeOff, Zap, ArrowRight, Building, CheckCircle, AlertCircle } from 'lucide-react';
+import { User, Eye, EyeOff, Zap, ArrowRight, Building, CheckCircle, AlertCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import Notification, { NotificationType } from './Notification';
 import RegisterModal from './RegisterModal';
