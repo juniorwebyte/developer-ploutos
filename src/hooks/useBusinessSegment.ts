@@ -7,10 +7,6 @@ export const useBusinessSegment = () => {
   const [companySegment, setCompanySegment] = useState<CompanyBusinessSegment | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadSegment();
-  }, []);
-
   const loadSegment = () => {
     try {
       const segment = businessSegmentService.getCompanySegment();
@@ -30,6 +26,11 @@ export const useBusinessSegment = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadSegment();
+  }, []);
+
 
   const config: BusinessSegmentConfig | null = useMemo(() => {
     return companySegment?.config || null;
