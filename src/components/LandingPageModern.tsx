@@ -1,40 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  Calculator,
-  PlayCircle,
-  LogIn,
-  Shield,
-  TrendingUp,
-  Users,
-  Clock,
-  Zap,
-  BarChart3,
-  FileText,
-  Printer,
-  CreditCard,
-  ArrowRight,
-  CheckCircle,
-  DollarSign,
-  Building,
-  Menu,
-  X,
-  ChevronRight,
-  Star,
-  MessageCircle,
-  Bell,
-  Database,
-  ShoppingCart,
-  Target,
-  Activity,
-  Globe,
-  Smartphone,
-  Monitor,
-  Server,
-  Cloud,
-  Lock,
-  Sparkles,
-  Rocket
-} from 'lucide-react';
+import { Calculator, PlayCircle, Zap, ArrowRight, Menu, X, Target, Smartphone, Sparkles } from 'lucide-react';
 import PaymentModal from './PaymentModal';
 import PaymentPage from './PaymentPage';
 import LicenseValidator from './LicenseValidator';

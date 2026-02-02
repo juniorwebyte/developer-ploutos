@@ -72,7 +72,7 @@ import { backupService } from '../services/backupService';
 import { pdvIntegrationService } from '../services/pdvIntegrationService';
 import cnpjService, { EmpresaData } from '../services/cnpjService';
 import cepService from '../services/cepService';
-import { formatPhone, formatCPFCNPJ, formatCPF, formatCNPJ, unformatPhone, unformatCPF, unformatCNPJ, formatCurrencyInput, unformatCurrency } from '../utils/formatters';
+import { formatPhone, formatCPFCNPJ, formatCPF, unformatPhone, formatCurrencyInput } from '../utils/formatters';
 import storageManager from '../utils/storage';
 import ProductCard from './ProductCard';
 import CartItem from './CartItem';
@@ -7459,7 +7459,7 @@ function PDVSystemNew({ onClose }: PDVSystemNewProps) {
                           setShowImportPurchaseModal(false);
                           alert(`${importedPurchases.length} compra(s) importada(s) com sucesso!`);
                         }
-                      } catch (_error$2) {
+                      } catch (error) {
                         alert('Erro ao processar arquivo.');
                       }
                     };
@@ -7639,7 +7639,7 @@ function PDVSystemNew({ onClose }: PDVSystemNewProps) {
                           setShowImportTransferModal(false);
                           alert(`${importedTransfers.length} transferência(s) importada(s) com sucesso!`);
                         }
-                      } catch (_error$2) {
+                      } catch (error) {
                         alert('Erro ao processar arquivo.');
                       }
                     };

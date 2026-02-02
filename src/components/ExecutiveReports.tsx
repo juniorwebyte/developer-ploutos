@@ -29,7 +29,7 @@ import {
   type Employee,
   type TimeClock,
 } from '../services/timeClockService';
-import { workScheduleService, type MonthSummary } from '../services/workScheduleService';
+import { workScheduleService } from '../services/workScheduleService';
 
 interface ExecutiveReportsProps {
   onBack?: () => void;
